@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IUB Rover Scout Group</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.35);
+  --blur: blur(24px);
+  --accent: #1f8f5f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #5fe3b6, transparent 40%),
+              radial-gradient(circle at 80% 30%, #6b8cff, transparent 45%),
+              radial-gradient(circle at 50% 80%, #a06bff, transparent 40%),
+              #0b0f14;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* floating background blur blobs */
+.blob {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.15);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.blob.one { top: -100px; left: -100px; }
+.blob.two { bottom: -120px; right: -120px; }
+
+header {
+  position: relative;
+  z-index: 2;
+  padding: 80px 20px 40px;
+  text-align: center;
+}
+
+header img {
+  width: 90px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+header p {
+  opacity: 0.85;
+  margin-top: 10px;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+}
+
+.glass-card h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #eafff5;
+}
+
+.glass-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* footer */
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px 20px;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+footer a {
+  color: #9fffdc;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+
+<header>
+  <!-- replace with official logos -->
+  <img src="https://iub.ac.bd/assets/images/logo.png" alt="IUB Logo">
+  <h1>IUB Rover Scout Group</h1>
+  <p>Independent University, Bangladesh</p>
+</header>
+
+<main>
+
+  <div class="glass-card">
+    <h2>About Us</h2>
+    <p>
+      The IUB Rover Scout Group is a recognized unit under Bangladesh Scouts,
+      operating at Independent University, Bangladesh. The group focuses on
+      leadership development, discipline, community service, and character
+      building among students through scouting activities.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <h2>Mission & Activities</h2>
+    <p>
+      The group actively participates in social welfare programs, leadership
+      training, volunteer services, national events, disaster response, and
+      various scouting-based skill development activities while upholding the
+      principles of Bangladesh Scouts.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <!-- replace with official images -->
+      <img src="https://iub.ac.bd/storage/media/iub-rover-1.jpg">
+      <img src="https://iub.ac.bd/storage/media/iub-rover-2.jpg">
+      <img src="https://iub.ac.bd/storage/media/iub-rover-3.jpg">
+      <img src="https://iub.ac.bd/storage/media/iub-rover-4.jpg">
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <h2>Contact</h2>
+    <p>
+      Follow IUB Rover Scout Group for updates and activities.
+      <br><br>
+      Facebook:
+      <a href="https://www.facebook.com/iubroverscoutgroup/" target="_blank">
+        facebook.com/iubroverscoutgroup
+      </a>
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © Independent University, Bangladesh · IUB Rover Scout Group
+</footer>
+
+</body>
+</html>

@@ -2,303 +2,214 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>IUB Rover Scout Group | IUB</title>
+<title>IUB Rover Scout Group</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
-  --white:#ffffff;
-  --light:#f6f8fb;
-  --glass:rgba(255,255,255,0.85);
-  --border:rgba(0,0,0,0.08);
-  --shadow-soft:0 10px 30px rgba(0,0,0,0.06);
-  --shadow-deep:0 25px 60px rgba(0,0,0,0.12);
-  --accent:#1f8f5f;
+:root {
+  --glass-bg: rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.35);
+  --blur: blur(24px);
+  --accent: #1f8f5f;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:system-ui,-apple-system,sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-body{
-  background:var(--white);
-  color:#111;
-  overflow-x:hidden;
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #5fe3b6, transparent 40%),
+              radial-gradient(circle at 80% 30%, #6b8cff, transparent 45%),
+              radial-gradient(circle at 50% 80%, #a06bff, transparent 40%),
+              #0b0f14;
+  color: #fff;
+  overflow-x: hidden;
 }
 
-/* ================= HEADER ================= */
-
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:100;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(0px);
-  border-bottom:1px solid var(--border);
-  transition:all .35s ease;
+/* floating background blur blobs */
+.blob {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.15);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: 0;
 }
 
-header.scrolled{
-  backdrop-filter:blur(14px);
-  box-shadow:var(--shadow-soft);
+.blob.one { top: -100px; left: -100px; }
+.blob.two { bottom: -120px; right: -120px; }
+
+header {
+  position: relative;
+  z-index: 2;
+  padding: 80px 20px 40px;
+  text-align: center;
 }
 
-.header-inner{
-  max-width:1200px;
-  margin:auto;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+header img {
+  width: 90px;
+  margin-bottom: 20px;
 }
 
-.header-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
+header h1 {
+  font-size: 36px;
+  font-weight: 700;
 }
 
-.header-left img{
-  height:40px;
+header p {
+  opacity: 0.85;
+  margin-top: 10px;
 }
 
-nav a{
-  margin-left:18px;
-  text-decoration:none;
-  color:#111;
-  font-size:14px;
+main {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-/* ================= HERO ================= */
-
-.hero{
-  padding-top:110px;
-  background:linear-gradient(180deg,#ffffff,#f4f7fb);
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.hero-inner{
-  max-width:1100px;
-  margin:auto;
-  padding:60px 20px 40px;
+.glass-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
 }
 
-.hero h1{
-  font-size:38px;
-  margin-bottom:24px;
+.glass-card h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #eafff5;
 }
 
-/* ================= CAROUSEL ================= */
-
-.carousel{
-  display:flex;
-  gap:18px;
-  overflow-x:auto;
-  padding-bottom:10px;
+.glass-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
-.carousel img{
-  width:300px;
-  height:190px;
-  object-fit:cover;
-  border-radius:22px;
-  box-shadow:var(--shadow-soft);
-  background:#fff;
+/* gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
 }
 
-/* ================= SECTIONS ================= */
-
-section{
-  padding:60px 20px;
+.gallery img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.25);
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
+/* footer */
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px 20px;
+  opacity: 0.8;
+  font-size: 14px;
 }
 
-.glass{
-  background:var(--glass);
-  backdrop-filter:blur(16px);
-  border:1px solid var(--border);
-  border-radius:28px;
-  padding:36px;
-  box-shadow:var(--shadow-soft);
-  transform-origin:center;
-  transition:box-shadow .3s ease;
-  will-change:transform;
+footer a {
+  color: #9fffdc;
+  text-decoration: none;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+footer a:hover {
+  text-decoration: underline;
 }
 
-/* ================= FOOTER ================= */
-
-footer{
-  background:#f4f6fa;
-  padding:60px 20px;
-}
-
-footer img{
-  height:45px;
-  margin-bottom:15px;
-}
-
-footer p{
-  font-size:14px;
-  line-height:1.6;
+/* mobile */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 28px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header id="header">
-  <div class="header-inner">
-    <div class="header-left">
-      <img src="logo-iub.png" alt="IUB Logo">
-      <strong>Independent University, Bangladesh</strong>
-    </div>
-    <nav>
-      <a href="#">About</a>
-      <a href="#">Academics</a>
-      <a href="#">Admissions</a>
-      <a href="#">Research & Innovation</a>
-      <a href="#">Campus Life</a>
-      <a href="#">Facilities & Resources</a>
-      <a href="#">News & Events</a>
-    </nav>
-  </div>
+<div class="blob one"></div>
+<div class="blob two"></div>
+
+<header>
+  <!-- replace with official logos -->
+  <img src="https://iub.ac.bd/assets/images/logo.png" alt="IUB Logo">
+  <h1>IUB Rover Scout Group</h1>
+  <p>Independent University, Bangladesh</p>
 </header>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner glass" data-depth="0.6">
-    <h1>IUB Rover Scout Group</h1>
-    <div class="carousel">
-      <img src="photo1.png">
-      <img src="photo2.png">
-      <img src="photo3.png">
-      <img src="photo4.png">
-      <img src="photo5.png">
-    </div>
-  </div>
-</div>
+<main>
 
-<!-- WHAT IS SCOUTING -->
-<section>
-  <div class="container">
-    <div class="glass" data-depth="0.3">
-      <h2>What is Scouting?</h2>
-      <p>
-        Scouting is a global youth Movement that builds friendships, experiences,
-        and skills for life, shaping young people's futures as active citizens.
-        More than 500 million young people and adults have joined and experienced
-        the power of Scouting's non-formal education since it was founded in 1907.
-        <br><br>
-        Since then, the Scout Movement has continued to grow and is now active in
-        176 National Scout Organizations. Today, over 60 million young people,
-        supported by millions of dedicated volunteers, take part in Scouting
-        activities and events worldwide.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- IUB ROVER SCOUT GROUP -->
-<section>
-  <div class="container">
-    <div class="glass" data-depth="0.4">
-      <h2>IUB Rover Scout Group</h2>
-      <p>
-        Established in 2025, the IUB Rover Scout Group serves as a vibrant platform
-        for Independent University, Bangladesh students to develop leadership,
-        discipline, and a spirit of service. Guided by the core values of scouting—
-        duty, integrity, and community—the group actively engages in campus and
-        national initiatives promoting personal growth and social responsibility.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- MISSION & VISION -->
-<section>
-  <div class="container grid">
-    <div class="glass" data-depth="0.5">
-      <h2>Mission</h2>
-      <p>
-        Scouting's mission is to contribute to the education of young people through
-        a value system based on the Scout Promise and Law. Through Scouting, we are
-        building a better world where people are self-fulfilled as individuals and
-        play a constructive role in society.
-      </p>
-    </div>
-    <div class="glass" data-depth="0.5">
-      <h2>Vision</h2>
-      <p>
-        To be the world’s most inspiring and inclusive youth movement, creating
-        transformative learning experiences for every young person, everywhere.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <img src="logo-iub.png">
+  <div class="glass-card">
+    <h2>About Us</h2>
     <p>
-      Independent University, Bangladesh<br>
-      Plot 16, Block B, Aftabuddin Ahmed Road<br>
-      Bashundhara Residential Area, Dhaka 1245<br><br>
-      Phone: 88-02-8431645-53, 8432065-76<br>
-      Hotline: 880 9612-939393<br>
-      Fax: 88-02-8431991<br>
-      Email: info@iub.edu.bd
+      The IUB Rover Scout Group is a recognized unit under Bangladesh Scouts,
+      operating at Independent University, Bangladesh. The group focuses on
+      leadership development, discipline, community service, and character
+      building among students through scouting activities.
     </p>
   </div>
+
+  <div class="glass-card">
+    <h2>Mission & Activities</h2>
+    <p>
+      The group actively participates in social welfare programs, leadership
+      training, volunteer services, national events, disaster response, and
+      various scouting-based skill development activities while upholding the
+      principles of Bangladesh Scouts.
+    </p>
+  </div>
+
+  <div class="glass-card">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <!-- replace with official images -->
+      <img src="https://iub.ac.bd/storage/media/iub-rover-1.jpg">
+      <img src="https://iub.ac.bd/storage/media/iub-rover-2.jpg">
+      <img src="https://iub.ac.bd/storage/media/iub-rover-3.jpg">
+      <img src="https://iub.ac.bd/storage/media/iub-rover-4.jpg">
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <h2>Contact</h2>
+    <p>
+      Follow IUB Rover Scout Group for updates and activities.
+      <br><br>
+      Facebook:
+      <a href="https://www.facebook.com/iubroverscoutgroup/" target="_blank">
+        facebook.com/iubroverscoutgroup
+      </a>
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  © Independent University, Bangladesh · IUB Rover Scout Group
 </footer>
-
-<script>
-let lastScroll = 0;
-
-const glassItems = document.querySelectorAll('.glass');
-const header = document.getElementById('header');
-
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const delta = scrollY - lastScroll;
-  lastScroll = scrollY;
-
-  if (scrollY > 20) header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
-
-  glassItems.forEach(card => {
-    const rect = card.getBoundingClientRect();
-    const depth = parseFloat(card.dataset.depth || 0.3);
-
-    const offset = (window.innerHeight / 2 - rect.top) * 0.0008;
-    const velocity = Math.min(Math.abs(delta) * 0.001, 0.02);
-
-    const scale = 1 - velocity + depth * 0.005;
-    const translate = offset * 30;
-
-    card.style.transform =
-      `translateY(${translate}px) scale(${scale})`;
-
-    card.style.boxShadow =
-      delta > 0 ? "0 30px 60px rgba(0,0,0,0.12)" : "0 15px 30px rgba(0,0,0,0.06)";
-  });
-});
-</script>
 
 </body>
 </html>

@@ -6,149 +6,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root {
-  --white: #ffffff;
-  --light: #f6f8fb;
-  --glass: rgba(255,255,255,0.75);
-  --border: rgba(0,0,0,0.08);
-  --shadow: 0 20px 40px rgba(0,0,0,0.08);
-  --accent: #1f8f5f;
+:root{
+  --white:#ffffff;
+  --light:#f6f8fb;
+  --glass:rgba(255,255,255,0.85);
+  --border:rgba(0,0,0,0.08);
+  --shadow-soft:0 10px 30px rgba(0,0,0,0.06);
+  --shadow-deep:0 25px 60px rgba(0,0,0,0.12);
+  --accent:#1f8f5f;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,sans-serif;
 }
 
-body {
-  background: var(--white);
-  color: #111;
-  overflow-x: hidden;
+body{
+  background:var(--white);
+  color:#111;
+  overflow-x:hidden;
 }
 
-/* ---------- SCROLL ANIMATION ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 0.9s ease;
+/* ================= HEADER ================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(0px);
+  border-bottom:1px solid var(--border);
+  transition:all .35s ease;
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+header.scrolled{
+  backdrop-filter:blur(14px);
+  box-shadow:var(--shadow-soft);
 }
 
-/* ---------- HEADER ---------- */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-.header-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.header-left img{
+  height:40px;
 }
 
-.header-left img {
-  height: 40px;
+nav a{
+  margin-left:18px;
+  text-decoration:none;
+  color:#111;
+  font-size:14px;
 }
 
-nav a {
-  margin-left: 18px;
-  text-decoration: none;
-  color: #111;
-  font-size: 14px;
+/* ================= HERO ================= */
+
+.hero{
+  padding-top:110px;
+  background:linear-gradient(180deg,#ffffff,#f4f7fb);
 }
 
-/* ---------- HERO ---------- */
-.hero {
-  padding: 80px 20px 40px;
-  background: linear-gradient(180deg, #ffffff, #f4f7fb);
+.hero-inner{
+  max-width:1100px;
+  margin:auto;
+  padding:60px 20px 40px;
 }
 
-.hero-inner {
-  max-width: 1100px;
-  margin: auto;
+.hero h1{
+  font-size:38px;
+  margin-bottom:24px;
 }
 
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
+/* ================= CAROUSEL ================= */
+
+.carousel{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  padding-bottom:10px;
 }
 
-/* ---------- GLASS SECTIONS ---------- */
-section {
-  padding: 40px 20px;
+.carousel img{
+  width:300px;
+  height:190px;
+  object-fit:cover;
+  border-radius:22px;
+  box-shadow:var(--shadow-soft);
+  background:#fff;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
+/* ================= SECTIONS ================= */
+
+section{
+  padding:60px 20px;
 }
 
-.glass {
-  background: var(--glass);
-  backdrop-filter: blur(18px);
-  border-radius: 24px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  padding: 30px;
+.container{
+  max-width:1100px;
+  margin:auto;
 }
 
-/* ---------- CAROUSEL ---------- */
-.carousel {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:36px;
+  box-shadow:var(--shadow-soft);
+  transform-origin:center;
+  transition:box-shadow .3s ease;
+  will-change:transform;
 }
 
-.carousel img {
-  width: 280px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 18px;
-  scroll-snap-align: start;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
-/* ---------- GRID ---------- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+/* ================= FOOTER ================= */
+
+footer{
+  background:#f4f6fa;
+  padding:60px 20px;
 }
 
-/* ---------- FOOTER ---------- */
-footer {
-  background: #f4f6fa;
-  padding: 40px 20px;
-  margin-top: 60px;
+footer img{
+  height:45px;
+  margin-bottom:15px;
 }
 
-footer .container {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-footer img {
-  height: 45px;
-  margin-bottom: 15px;
+footer p{
+  font-size:14px;
+  line-height:1.6;
 }
 </style>
 </head>
@@ -156,7 +161,7 @@ footer img {
 <body>
 
 <!-- HEADER -->
-<header>
+<header id="header">
   <div class="header-inner">
     <div class="header-left">
       <img src="logo-iub.png" alt="IUB Logo">
@@ -176,7 +181,7 @@ footer img {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-inner reveal">
+  <div class="hero-inner glass" data-depth="0.6">
     <h1>IUB Rover Scout Group</h1>
     <div class="carousel">
       <img src="photo1.png">
@@ -190,8 +195,8 @@ footer img {
 
 <!-- WHAT IS SCOUTING -->
 <section>
-  <div class="container reveal">
-    <div class="glass">
+  <div class="container">
+    <div class="glass" data-depth="0.3">
       <h2>What is Scouting?</h2>
       <p>
         Scouting is a global youth Movement that builds friendships, experiences,
@@ -210,8 +215,8 @@ footer img {
 
 <!-- IUB ROVER SCOUT GROUP -->
 <section>
-  <div class="container reveal">
-    <div class="glass">
+  <div class="container">
+    <div class="glass" data-depth="0.4">
       <h2>IUB Rover Scout Group</h2>
       <p>
         Established in 2025, the IUB Rover Scout Group serves as a vibrant platform
@@ -226,8 +231,8 @@ footer img {
 
 <!-- MISSION & VISION -->
 <section>
-  <div class="container grid reveal">
-    <div class="glass">
+  <div class="container grid">
+    <div class="glass" data-depth="0.5">
       <h2>Mission</h2>
       <p>
         Scouting's mission is to contribute to the education of young people through
@@ -236,28 +241,12 @@ footer img {
         play a constructive role in society.
       </p>
     </div>
-    <div class="glass">
+    <div class="glass" data-depth="0.5">
       <h2>Vision</h2>
       <p>
         To be the world’s most inspiring and inclusive youth movement, creating
         transformative learning experiences for every young person, everywhere.
       </p>
-    </div>
-  </div>
-</section>
-
-<!-- OBJECTIVES -->
-<section>
-  <div class="container reveal">
-    <div class="glass">
-      <h2>Objectives</h2>
-      <ul>
-        <li>Develop leadership qualities and ethical values among students.</li>
-        <li>Encourage voluntary community service and civic responsibility.</li>
-        <li>Promote teamwork, discipline, and environmental stewardship.</li>
-        <li>Enhance practical life skills through training and adventure.</li>
-        <li>Strengthen cooperation with the national scouting movement.</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -279,13 +268,34 @@ footer img {
 </footer>
 
 <script>
-const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add("active");
-    }
+let lastScroll = 0;
+
+const glassItems = document.querySelectorAll('.glass');
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const delta = scrollY - lastScroll;
+  lastScroll = scrollY;
+
+  if (scrollY > 20) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+
+  glassItems.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const depth = parseFloat(card.dataset.depth || 0.3);
+
+    const offset = (window.innerHeight / 2 - rect.top) * 0.0008;
+    const velocity = Math.min(Math.abs(delta) * 0.001, 0.02);
+
+    const scale = 1 - velocity + depth * 0.005;
+    const translate = offset * 30;
+
+    card.style.transform =
+      `translateY(${translate}px) scale(${scale})`;
+
+    card.style.boxShadow =
+      delta > 0 ? "0 30px 60px rgba(0,0,0,0.12)" : "0 15px 30px rgba(0,0,0,0.06)";
   });
 });
 </script>
